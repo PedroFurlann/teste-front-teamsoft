@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
+import { Container, ContainerPrices, ContainerProductDescription, ContainerProductTitle, HamburguerImg, ImgContainer, LeftContainer, NewPrice, OriginalPrice, ProductDescription, ProductTitle } from "./styles";
+import hamburguer from '../../assets/foto.jpg'
 
 interface HamburguerProps {
   id: string;
@@ -45,6 +47,29 @@ export function Home() {
   }, []);
 
   return (
+   <>
     <Header />
+    <Container>
+      <LeftContainer>
+        <ImgContainer>
+          <HamburguerImg src={hamburguer} />
+        </ImgContainer>
+        <ContainerProductTitle>
+          <ProductTitle>{product?.nm_product}</ProductTitle>
+        </ContainerProductTitle>
+        <ContainerProductDescription>
+          <ProductDescription>{product?.description}</ProductDescription>
+        </ContainerProductDescription>
+        <ContainerPrices>
+          <NewPrice>
+            R${product?.vl_discount}
+          </NewPrice>
+          <OriginalPrice>
+            R${product?.vl_price}
+          </OriginalPrice>
+        </ContainerPrices>
+      </LeftContainer>
+    </Container>
+    </> 
   )
 }

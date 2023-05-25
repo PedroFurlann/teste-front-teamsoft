@@ -1,6 +1,18 @@
 import { styled } from "styled-components";
 
-export const Container = styled.div`
+export const GlobalContainer = styled.div`
+  @media (max-width: 768px) {
+    header {
+      display: none;
+    }
+
+    div {
+      display: flex;
+    }
+  }
+`
+
+export const Container = styled.header`
   display: flex;
   align-items: center;
   height: 80px;
@@ -11,9 +23,19 @@ export const Container = styled.div`
 `
 
 export const ImgLogo = styled.img`
-  object-fit: cover;
 `
 
 export const ImgLocal = styled.img`
-  object-fit: cover;
+`
+
+export const ContainerMobile = styled.div`
+  display: none;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  background-color: #F4F4F4;
+  justify-content: space-around;
+
+
+
 `

@@ -1,8 +1,36 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
-import { Container, ContainerPrices, ContainerProductDescription, ContainerProductTitle, HamburguerImg, ImgContainer, LeftContainer, NewPrice, OriginalPrice, ProductDescription, ProductTitle } from "./styles";
-import hamburguer from '../../assets/foto.jpg'
+import {
+  AddIngredientsContainer,
+  AddIngredientsContainerBoxCount,
+  AddIngredientsContainerBoxCountContainer,
+  AddIngredientsContainerIconPrice,
+  AddIngredientsContainerLine,
+  AddIngredientsContainerPrice,
+  AddIngredientsContainerTitle,
+  AddIngredientsContainerTitleContainer,
+  AddIngredientsPrice,
+  Container,
+  ContainerPrices,
+  ContainerProductDescription,
+  ContainerProductTitle,
+  HamburguerImg,
+  HeaderIngredientsContainer,
+  HeaderIngredientsContainerSubtitle,
+  HeaderIngredientsContainerTitle,
+  IconButton,
+  ImgContainer,
+  IngredientsContainer,
+  LeftContainer,
+  NewPrice,
+  OriginalPrice,
+  ProductDescription,
+  ProductTitle,
+  RightContainer,
+} from "./styles";
+import hamburguer from "../../assets/foto.jpg";
+import { Minus, Plus } from "phosphor-react";
 
 interface HamburguerProps {
   id: string;
@@ -12,21 +40,18 @@ interface HamburguerProps {
   vl_price: number;
   vl_discount: number;
   url_image: string;
-  ingredients: IngredientGroup[];
+  ingredients: {
+    group: string;
+    max_itens: number;
+    type: string;
+    itens: {
+      id: number;
+    nm_item: string;
+    vl_item: number;
+    } []
+  } []
 }
 
-interface IngredientItem {
-  id: number;
-  nm_item: string;
-  vl_item: number;
-}
-
-interface IngredientGroup {
-  group: string;
-  max_itens: number;
-  type: string;
-  itens: IngredientItem[];
-}
 
 export function Home() {
   const [product, setProduct] = useState<HamburguerProps | null>(null);
@@ -42,34 +67,157 @@ export function Home() {
     }
   }
 
+
   useEffect(() => {
     fetchHamburguerProps();
   }, []);
 
   return (
-   <>
-    <Header />
-    <Container>
-      <LeftContainer>
-        <ImgContainer>
-          <HamburguerImg src={hamburguer} />
-        </ImgContainer>
-        <ContainerProductTitle>
-          <ProductTitle>{product?.nm_product}</ProductTitle>
-        </ContainerProductTitle>
-        <ContainerProductDescription>
-          <ProductDescription>{product?.description}</ProductDescription>
-        </ContainerProductDescription>
-        <ContainerPrices>
-          <NewPrice>
-            R${product?.vl_discount}
-          </NewPrice>
-          <OriginalPrice>
-            R${product?.vl_price}
-          </OriginalPrice>
-        </ContainerPrices>
-      </LeftContainer>
-    </Container>
-    </> 
-  )
+    <>
+      <>
+        <Header />
+        <Container>
+          <LeftContainer>
+            <ImgContainer>
+              <HamburguerImg src={hamburguer} />
+            </ImgContainer>
+            <ContainerProductTitle>
+              <ProductTitle>{product?.nm_product}</ProductTitle>
+            </ContainerProductTitle>
+            <ContainerProductDescription>
+              <ProductDescription>{product?.description}</ProductDescription>
+            </ContainerProductDescription>
+            <ContainerPrices>
+              <NewPrice>R${product?.vl_discount}</NewPrice>
+              <OriginalPrice>R${product?.vl_price}</OriginalPrice>
+            </ContainerPrices>
+          </LeftContainer>
+          <RightContainer>
+            <IngredientsContainer>
+              <HeaderIngredientsContainer>
+                <HeaderIngredientsContainerTitle>
+                  Adicionar Ingredientes
+                </HeaderIngredientsContainerTitle>
+                <HeaderIngredientsContainerSubtitle>
+                  Até 8 ingredientes
+                </HeaderIngredientsContainerSubtitle>
+              </HeaderIngredientsContainer>
+              <AddIngredientsContainer>
+                <AddIngredientsContainerTitleContainer>
+                  <AddIngredientsContainerTitle>
+                    {product?.ingredients[0].itens[0].nm_item}
+                  </AddIngredientsContainerTitle>
+                  </AddIngredientsContainerTitleContainer>
+  
+                  <AddIngredientsContainerBoxCountContainer>
+                    <AddIngredientsContainerBoxCount>
+                      <IconButton>
+                        <Minus size={16} color="#D80000" />
+                      </IconButton>
+                      2
+                      <IconButton>
+                        <Plus size={16} color="#D80000" />
+                      </IconButton>
+                    </AddIngredientsContainerBoxCount>
+                  </AddIngredientsContainerBoxCountContainer>
+                  <AddIngredientsContainerPrice>
+                    <AddIngredientsContainerIconPrice>
+                      <Plus size={12} color="#F09035" />
+                    </AddIngredientsContainerIconPrice>
+                    <AddIngredientsPrice>
+                      {product?.ingredients[0].itens[0].vl_item}
+                    </AddIngredientsPrice>
+                  </AddIngredientsContainerPrice>
+                  <AddIngredientsContainerLine />
+              </AddIngredientsContainer>
+              <AddIngredientsContainer style={{ marginTop: 24 }}>
+                <AddIngredientsContainerTitleContainer>
+                  <AddIngredientsContainerTitle>
+                    {product?.ingredients[0].itens[0].nm_item}
+                  </AddIngredientsContainerTitle>
+                  </AddIngredientsContainerTitleContainer>
+  
+                  <AddIngredientsContainerBoxCountContainer>
+                    <AddIngredientsContainerBoxCount>
+                      <IconButton>
+                        <Minus size={16} color="#D80000" />
+                      </IconButton>
+                      2
+                      <IconButton>
+                        <Plus size={16} color="#D80000" />
+                      </IconButton>
+                    </AddIngredientsContainerBoxCount>
+                  </AddIngredientsContainerBoxCountContainer>
+                  <AddIngredientsContainerPrice>
+                    <AddIngredientsContainerIconPrice>
+                      <Plus size={12} color="#F09035" />
+                    </AddIngredientsContainerIconPrice>
+                    <AddIngredientsPrice>
+                      {product?.ingredients[0].itens[0].vl_item}
+                    </AddIngredientsPrice>
+                  </AddIngredientsContainerPrice>
+                  <AddIngredientsContainerLine />
+              </AddIngredientsContainer>
+              <AddIngredientsContainer style={{ marginTop: 24 }}>
+                <AddIngredientsContainerTitleContainer>
+                  <AddIngredientsContainerTitle>
+                    {product?.ingredients[0].itens[0].nm_item}
+                  </AddIngredientsContainerTitle>
+                  </AddIngredientsContainerTitleContainer>
+  
+                  <AddIngredientsContainerBoxCountContainer>
+                    <AddIngredientsContainerBoxCount>
+                      <IconButton>
+                        <Minus size={16} color="#D80000" />
+                      </IconButton>
+                      2
+                      <IconButton>
+                        <Plus size={16} color="#D80000" />
+                      </IconButton>
+                    </AddIngredientsContainerBoxCount>
+                  </AddIngredientsContainerBoxCountContainer>
+                  <AddIngredientsContainerPrice>
+                    <AddIngredientsContainerIconPrice>
+                      <Plus size={12} color="#F09035" />
+                    </AddIngredientsContainerIconPrice>
+                    <AddIngredientsPrice>
+                      {product?.ingredients[0].itens[0].vl_item}
+                    </AddIngredientsPrice>
+                  </AddIngredientsContainerPrice>
+                  <AddIngredientsContainerLine />
+              </AddIngredientsContainer>
+               <AddIngredientsContainer style={{ marginTop: 24 }}>
+                <AddIngredientsContainerTitleContainer>
+                  <AddIngredientsContainerTitle>
+                    {product?.ingredients[0].itens[0].nm_item}
+                  </AddIngredientsContainerTitle>
+                  </AddIngredientsContainerTitleContainer>
+  
+                  <AddIngredientsContainerBoxCountContainer>
+                    <AddIngredientsContainerBoxCount>
+                      <IconButton>
+                        <Minus size={16} color="#D80000" />
+                      </IconButton>
+                      2
+                      <IconButton>
+                        <Plus size={16} color="#D80000" />
+                      </IconButton>
+                    </AddIngredientsContainerBoxCount>
+                  </AddIngredientsContainerBoxCountContainer>
+                  <AddIngredientsContainerPrice>
+                    <AddIngredientsContainerIconPrice>
+                      <Plus size={12} color="#F09035" />
+                    </AddIngredientsContainerIconPrice>
+                    <AddIngredientsPrice>
+                      {product?.ingredients[0].itens[0].vl_item}
+                    </AddIngredientsPrice>
+                  </AddIngredientsContainerPrice>
+                  <AddIngredientsContainerLine />
+              </AddIngredientsContainer>
+            </IngredientsContainer>
+          </RightContainer>
+        </Container>
+      </>
+    </>
+  );
 }

@@ -80,30 +80,30 @@ export function Home() {
   const [molhoDePicanhaQuantity, setMolhoDePicanhaQuantity] = useState(0);
   const [talheresQuantity, setTalheresQuantity] = useState(0);
   const [additionalTotal, setAdditionalTotal] = useState(0);
-  const [needTalherYes, setNeedTalherYes] = useState(false);
-  const [needTalherNo, setNeedTalherNo] = useState(false);
+  const [needCutleryYes, setNeedCutleryYes] = useState(false);
+  const [needCutleryNo, setNeedCutleryNo] = useState(true);
 
-  function changeNeedTalherForYes() {
-    if (needTalherYes === false) {
-      setNeedTalherYes(true);
-      setNeedTalherNo(false);
+  function changeNeedCutleryForYes() {
+    if (needCutleryYes === false) {
+      setNeedCutleryYes(true);
+      setNeedCutleryNo(false);
     }
 
-    if (needTalherYes === true) {
-      setNeedTalherYes(false);
-      setNeedTalherNo(true);
+    if (needCutleryYes === true) {
+      setNeedCutleryYes(false);
+      setNeedCutleryNo(true);
     }
   }
 
-  function changeNeedTalherForNo() {
-    if (needTalherNo === false) {
-      setNeedTalherNo(true);
-      setNeedTalherYes(false);
+  function changeNeedCutleryForNo() {
+    if (needCutleryNo === false) {
+      setNeedCutleryNo(true);
+      setNeedCutleryYes(false);
     }
 
-    if (needTalherNo === true) {
-      setNeedTalherNo(false);
-      setNeedTalherYes(true);
+    if (needCutleryNo === true) {
+      setNeedCutleryNo(false);
+      setNeedCutleryYes(true);
     }
   }
 
@@ -359,43 +359,43 @@ export function Home() {
             <QuestionContainer>
               <TextQuestion>{product?.ingredients[1].group}</TextQuestion>
             </QuestionContainer>
-            {needTalherYes ? (
+            {needCutleryYes ? (
               <TextAndIconContainer>
                 <TextForIconMobile>Sim</TextForIconMobile>
-                <IconButton onClick={changeNeedTalherForYes}>
+                <IconButton onClick={changeNeedCutleryForYes}>
                   <RadioButton color="#FEBC10" size={20} weight="fill" />
                 </IconButton>
               </TextAndIconContainer>
             ) : (
               <TextAndIconContainer>
                 <TextForIconMobile>Sim</TextForIconMobile>
-                <IconButton onClick={changeNeedTalherForYes}>
+                <IconButton onClick={changeNeedCutleryForYes}>
                   <Circle color="#FEBC10" size={20} />
                 </IconButton>
               </TextAndIconContainer>
             )}
-            {needTalherNo ? (
+            {needCutleryNo ? (
               <TextAndIconContainer style={{ marginBottom: 48 }}>
                 <TextForIconMobile>Não</TextForIconMobile>
-                <IconButton onClick={changeNeedTalherForNo}>
+                <IconButton onClick={changeNeedCutleryForNo}>
                   <RadioButton color="#FEBC10" size={20} weight="fill" />
                 </IconButton>
               </TextAndIconContainer>
             ) : (
               <TextAndIconContainer style={{ marginBottom: 48 }}>
                 <TextForIconMobile>Não</TextForIconMobile>
-                <IconButton onClick={changeNeedTalherForNo}>
+                <IconButton onClick={changeNeedCutleryForNo}>
                   <Circle color="#FEBC10" size={20} />
                 </IconButton>
               </TextAndIconContainer>
             )}
             <FooterRightContainer>
               <FooterRightContainerBoxCount>
-                <IconButton onClick={decreaseTalheresQuantity} disabled={needTalherNo}>
+                <IconButton onClick={decreaseTalheresQuantity} disabled={needCutleryNo}>
                   <Minus size={16} color="#D80000" />
                 </IconButton>
                 {talheresQuantity}
-                <IconButton onClick={addTalheresQuantity} disabled={needTalherNo}>
+                <IconButton onClick={addTalheresQuantity} disabled={needCutleryNo}>
                   <Plus size={16} color="#D80000" />
                 </IconButton>
               </FooterRightContainerBoxCount>

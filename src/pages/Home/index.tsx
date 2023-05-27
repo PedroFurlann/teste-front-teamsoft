@@ -22,6 +22,7 @@ import {
   FooterRightContainerBoxCount,
   FooterRightContainerTextAdd,
   HamburguerImg,
+  HamburguerImgMobile,
   HeaderIngredientsContainer,
   HeaderIngredientsContainerSubtitle,
   HeaderIngredientsContainerTitle,
@@ -46,6 +47,7 @@ import {
   TitleBodyPopover,
 } from "./styles";
 import hamburguer from "../../assets/foto.jpg";
+import hamburguerMobile from '../../assets/fotoMobile.png'
 import { Minus, Plus } from "phosphor-react";
 
 interface HamburguerProps {
@@ -190,7 +192,8 @@ export function Home() {
         <ContainerBody>
           <LeftContainer>
             <ImgContainer>
-              <HamburguerImg src={hamburguer} />
+              <HamburguerImg src={hamburguer} alt="Hamburguer" />
+              <HamburguerImgMobile src={hamburguerMobile} alt="Hamburguer" />
             </ImgContainer>
             <ContainerProductTitle>
               <ProductTitle>{product?.nm_product}</ProductTitle>

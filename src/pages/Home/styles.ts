@@ -3,12 +3,20 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
   height: 100%;
+  background: #FFFFFF;
 `
 
 export const ContainerBody = styled.div`
   background-color: #fff;
   display: flex;
   gap: 5rem;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 export const ImgContainer = styled.div`
@@ -20,6 +28,23 @@ export const HamburguerImg = styled.img`
   width: 597px;
   height: 388px;
   object-fit: cover;
+
+  @media (max-width: 1200px) {
+    width: 343px;
+    height: 130px;
+    display: none;
+  }
+`
+
+export const HamburguerImgMobile = styled.img`
+  display: none;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 `
 
 export const LeftContainer = styled.div`
@@ -27,6 +52,11 @@ export const LeftContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 96px;
+
+  @media (max-width: 1200px) {
+    padding: 0;
+    width: 100%;
+  }
 ` 
 
 export const ContainerProductTitle = styled.div`
@@ -40,6 +70,11 @@ export const ProductTitle = styled.p`
   font-size: 28px;
   line-height: 28px;
   color: #4E4E4E;
+
+  @media (max-width: 1200px) {
+    font-size: 18px;
+    line-height: 16px;
+  }
 `
 
 export const ContainerProductDescription = styled.div`
@@ -53,6 +88,11 @@ export const ProductDescription = styled.p`
   font-size: 20px;
   line-height: 24px;
   color: #4E4E4E;
+
+  @media (max-width: 1200px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
 `
 
 export const ContainerPrices = styled.div`
@@ -67,6 +107,11 @@ export const NewPrice = styled.p`
   font-size: 32px;
   line-height: 38px;
   color: #DC6E05;
+
+  @media (max-width: 1200px) {
+    font-size: 14px;
+    line-height: 16px;
+  }
 `
 
 export const OriginalPrice = styled.p`
@@ -77,6 +122,11 @@ export const OriginalPrice = styled.p`
   line-height: 38px;
   text-decoration-line: line-through;
   color: #4E4E4E;
+
+  @media (max-width: 1200px) {
+    font-size: 14px;
+    line-height: 16px;
+  }
 `
 
 export const RightContainer = styled.div`
@@ -84,12 +134,22 @@ export const RightContainer = styled.div`
   padding-top: 24px;
   padding-bottom: 24px;
   padding-right: 106px;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    padding: 0
+  }
 `
 
 export const IngredientsContainer = styled.div`
   padding: 42px;
   border: 1px solid #4E4E4E;
   border-radius: 8px;
+
+  @media (max-width: 1200px) {
+    border: none;
+    padding: 0;
+  }
 `
 
 export const HeaderIngredientsContainer = styled.div`

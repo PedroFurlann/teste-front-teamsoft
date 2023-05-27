@@ -1,6 +1,11 @@
+import Popup from "reactjs-popup";
 import { styled } from "styled-components";
 
 export const Container = styled.div`
+  height: 100%;
+`
+
+export const ContainerBody = styled.div`
   background-color: #fff;
   display: flex;
   gap: 5rem;
@@ -248,4 +253,71 @@ export const FooterRightContainerTextAdd = styled.p`
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.33px;
+`
+
+export const Popover = styled(Popup)`
+`
+
+export const PopoverContainer = styled.div`
+  height: 200px;
+  width: 220px;
+  background: #F8F8F8;
+`
+
+export const HeaderPopover = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin-bottom: 0.6rem;
+  background: #F09035;
+
+`
+
+export const HeaderPopoverText = styled.p`
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 100%;
+  color: #FFFFFF;
+`
+
+export const BodyPopover = styled.div`
+  padding: 0.9rem;
+  background: #F8F8F8;
+`
+
+export const TitleBodyPopover = styled.p`
+  color: #bc2e31;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 100%;
+  margin-bottom: 0.6rem;
+`
+
+export const HeaderListBodyPopover = styled.p`
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: #4E4E4E;
+  margin-bottom: 0.35rem;
+`
+
+export const ListBodyPopover = styled.ul`
+  padding-left: 1.2rem;
+`
+
+export const ItemListBodyPopover = styled.li`
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: #4E4E4E;
+  margin-bottom: 0.2rem;
 `

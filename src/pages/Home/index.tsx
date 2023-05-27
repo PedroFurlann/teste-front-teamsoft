@@ -11,7 +11,9 @@ import {
   AddIngredientsContainerTitle,
   AddIngredientsContainerTitleContainer,
   AddIngredientsPrice,
+  BodyPopover,
   Container,
+  ContainerBody,
   ContainerPrices,
   ContainerProductDescription,
   ContainerProductTitle,
@@ -23,17 +25,25 @@ import {
   HeaderIngredientsContainer,
   HeaderIngredientsContainerSubtitle,
   HeaderIngredientsContainerTitle,
+  HeaderListBodyPopover,
+  HeaderPopover,
+  HeaderPopoverText,
   IconButton,
   ImgContainer,
   IngredientsContainer,
+  ItemListBodyPopover,
   LeftContainer,
+  ListBodyPopover,
   NewPrice,
   OriginalPrice,
+  Popover,
+  PopoverContainer,
   ProductDescription,
   ProductTitle,
   QuestionContainer,
   RightContainer,
   TextQuestion,
+  TitleBodyPopover,
 } from "./styles";
 import hamburguer from "../../assets/foto.jpg";
 import { Minus, Plus } from "phosphor-react";
@@ -60,102 +70,104 @@ interface HamburguerProps {
 
 export function Home() {
   const [product, setProduct] = useState<HamburguerProps | null>(null);
-  const [queijoCheddarQuantity, setQueijoCheddarQuantity] = useState(0)
-  const [cebolaCrispyQuantity, setCebolaCrispyQuantity] = useState(0)
-  const [molhoCheddarQuantity, setMolhoCheddarQuantity] = useState(0)
-  const [molhoDePicanhaQuantity, setMolhoDePicanhaQuantity] = useState(0)
-  const [talheresQuantity, setTalheresQuantity] = useState(0)
-  const [additionalTotal, setAdditionalTotal] = useState(0)
+  const [queijoCheddarQuantity, setQueijoCheddarQuantity] = useState(0);
+  const [cebolaCrispyQuantity, setCebolaCrispyQuantity] = useState(0);
+  const [molhoCheddarQuantity, setMolhoCheddarQuantity] = useState(0);
+  const [molhoDePicanhaQuantity, setMolhoDePicanhaQuantity] = useState(0);
+  const [talheresQuantity, setTalheresQuantity] = useState(0);
+  const [additionalTotal, setAdditionalTotal] = useState(0);
 
   function addQueijoCheddarQuantity() {
     if (additionalTotal >= 8) {
-      return alert('Não é possível colocar mais ingredientes adicionais.')
+      return alert("Não é possível colocar mais ingredientes adicionais.");
     }
 
-    setQueijoCheddarQuantity((state) => state + 1)
-    setAdditionalTotal((state) => state + 1)
+    setQueijoCheddarQuantity((state) => state + 1);
+    setAdditionalTotal((state) => state + 1);
   }
 
   function decreaseQueijoCheddarQuantity() {
-    if(queijoCheddarQuantity <= 0) {
-      return alert('A quantidade desse adicional já é 0.')
-  }
+    if (queijoCheddarQuantity <= 0) {
+      return alert("A quantidade desse adicional já é 0.");
+    }
 
-    setQueijoCheddarQuantity((state) => state - 1)
-    setAdditionalTotal((state) => state - 1)
+    setQueijoCheddarQuantity((state) => state - 1);
+    setAdditionalTotal((state) => state - 1);
   }
 
   function addCebolaCrispyQuantity() {
     if (additionalTotal >= 8) {
-      return alert('Não é possível colocar mais ingredientes adicionais.')
+      return alert("Não é possível colocar mais ingredientes adicionais.");
     }
 
-    setCebolaCrispyQuantity((state) => state + 1)
-    setAdditionalTotal((state) => state + 1)
+    setCebolaCrispyQuantity((state) => state + 1);
+    setAdditionalTotal((state) => state + 1);
   }
 
   function decreaseCebolaCrispyQuantity() {
-    if(cebolaCrispyQuantity <= 0) {
-      return alert('A quantidade desse adicional já é 0.')
-  }
+    if (cebolaCrispyQuantity <= 0) {
+      return alert("A quantidade desse adicional já é 0.");
+    }
 
-    setCebolaCrispyQuantity((state) => state - 1)
-    setAdditionalTotal((state) => state - 1)
+    setCebolaCrispyQuantity((state) => state - 1);
+    setAdditionalTotal((state) => state - 1);
   }
 
   function addMolhoCheddarQuantity() {
     if (additionalTotal >= 8) {
-      return alert('Não é possível colocar mais ingredientes adicionais.')
+      return alert("Não é possível colocar mais ingredientes adicionais.");
     }
 
-    setMolhoCheddarQuantity((state) => state + 1)
-    setAdditionalTotal((state) => state + 1)
+    setMolhoCheddarQuantity((state) => state + 1);
+    setAdditionalTotal((state) => state + 1);
   }
 
   function decreaseMolhoCheddarQuantity() {
-    if(molhoCheddarQuantity <= 0) {
-      return alert('A quantidade desse adicional já é 0.')
-  }
+    if (molhoCheddarQuantity <= 0) {
+      return alert("A quantidade desse adicional já é 0.");
+    }
 
-    setMolhoCheddarQuantity((state) => state - 1)
-    setAdditionalTotal((state) => state - 1)
+    setMolhoCheddarQuantity((state) => state - 1);
+    setAdditionalTotal((state) => state - 1);
   }
 
   function addMolhoDePicanhaQuantity() {
     if (additionalTotal >= 8) {
-      return alert('Não é possível colocar mais ingredientes adicionais.')
+      return alert("Não é possível colocar mais ingredientes adicionais.");
     }
 
-    setMolhoDePicanhaQuantity((state) => state + 1)
-    setAdditionalTotal((state) => state + 1)
+    setMolhoDePicanhaQuantity((state) => state + 1);
+    setAdditionalTotal((state) => state + 1);
   }
 
   function decreaseMolhoDePicanhaQuantity() {
-    if(molhoDePicanhaQuantity <= 0) {
-      return alert('A quantidade desse adicional já é 0.')
-  }
+    if (molhoDePicanhaQuantity <= 0) {
+      return alert("A quantidade desse adicional já é 0.");
+    }
 
-    setMolhoDePicanhaQuantity((state) => state - 1)
-    setAdditionalTotal((state) => state - 1)
+    setMolhoDePicanhaQuantity((state) => state - 1);
+    setAdditionalTotal((state) => state - 1);
   }
 
   function addTalheresQuantity() {
     if (talheresQuantity >= 8) {
-      return alert('Não é possível adicionar mais talheres')
+      return alert("Não é possível adicionar mais talheres");
     }
 
-    setTalheresQuantity((state) => state + 1)
+    setTalheresQuantity((state) => state + 1);
   }
 
   function decreaseTalheresQuantity() {
-    if(talheresQuantity <= 0) {
-      return alert('A quantidade de talheres já é 0.')
+    if (talheresQuantity <= 0) {
+      return alert("A quantidade de talheres já é 0.");
+    }
+
+    setTalheresQuantity((state) => state - 1);
   }
 
-    setTalheresQuantity((state) => state - 1)
+  function finishOrder() {
+    console.log('ola')
   }
-
-
 
   async function fetchHamburguerProps() {
     try {
@@ -173,10 +185,9 @@ export function Home() {
   }, []);
 
   return (
-    <>
-      <>
+      <Container>
         <Header />
-        <Container>
+        <ContainerBody>
           <LeftContainer>
             <ImgContainer>
               <HamburguerImg src={hamburguer} />
@@ -327,16 +338,46 @@ export function Home() {
                     <Plus size={16} color="#D80000" />
                   </IconButton>
                 </FooterRightContainerBoxCount>
-                <FooterRightContainerAddButon>
-                  <FooterRightContainerTextAdd>
-                    Adicionar
-                  </FooterRightContainerTextAdd>
-                </FooterRightContainerAddButon>
+                <Popover
+                  trigger={
+                    <FooterRightContainerAddButon onClick={finishOrder}>
+                      <FooterRightContainerTextAdd>
+                        Adicionar
+                      </FooterRightContainerTextAdd>
+                    </FooterRightContainerAddButon>
+                  }
+                  position="top center"
+                >
+                  <PopoverContainer>
+                    <HeaderPopover>
+                      <HeaderPopoverText>
+                        Adicionado com sucesso
+                      </HeaderPopoverText>
+                    </HeaderPopover>
+                    <BodyPopover>
+                      <TitleBodyPopover>Oferta Cheddar Bacon</TitleBodyPopover>
+                      <HeaderListBodyPopover>Adicionais:</HeaderListBodyPopover>
+                      <ListBodyPopover>
+                        <ItemListBodyPopover>
+                          {queijoCheddarQuantity}&nbsp;Queijo Cheddar
+                        </ItemListBodyPopover>
+                        <ItemListBodyPopover>
+                          {cebolaCrispyQuantity}&nbsp;Cebola Crispy
+                        </ItemListBodyPopover>
+                        <ItemListBodyPopover>
+                          {molhoCheddarQuantity}&nbsp;Molho cheddar
+                        </ItemListBodyPopover>
+                        <ItemListBodyPopover>
+                          {molhoDePicanhaQuantity}&nbsp;Molho de picanha
+                        </ItemListBodyPopover>
+                      </ListBodyPopover>
+                    </BodyPopover>
+                  </PopoverContainer>
+                </Popover>
               </FooterRightContainer>
             </IngredientsContainer>
           </RightContainer>
-        </Container>
-      </>
-    </>
+        </ContainerBody>
+      </Container>
   );
 }

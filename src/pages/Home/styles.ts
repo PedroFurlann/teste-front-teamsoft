@@ -72,6 +72,11 @@ export const ProductTitle = styled.p`
   color: #4E4E4E;
 
   @media (max-width: 1200px) {
+    font-size: 22px;
+    line-height: 16px;
+  }
+
+  @media (max-width: 1000px) {
     font-size: 18px;
     line-height: 16px;
   }
@@ -90,6 +95,11 @@ export const ProductDescription = styled.p`
   color: #4E4E4E;
 
   @media (max-width: 1200px) {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  @media (max-width: 1000px) {
     font-size: 16px;
     line-height: 20px;
   }
@@ -109,6 +119,11 @@ export const NewPrice = styled.p`
   color: #DC6E05;
 
   @media (max-width: 1200px) {
+    font-size: 22px;
+    line-height: 16px;
+  }
+
+  @media (max-width: 1000px) {
     font-size: 14px;
     line-height: 16px;
   }
@@ -124,6 +139,11 @@ export const OriginalPrice = styled.p`
   color: #4E4E4E;
 
   @media (max-width: 1200px) {
+    font-size: 22px;
+    line-height: 16px;
+  }
+
+  @media (max-width: 1000px) {
     font-size: 14px;
     line-height: 16px;
   }

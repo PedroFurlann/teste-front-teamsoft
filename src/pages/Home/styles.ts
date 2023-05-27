@@ -90,7 +90,7 @@ export const IngredientsContainer = styled.div`
 export const HeaderIngredientsContainer = styled.div`
   height: 55px;
   background: rgba(253, 215, 14, 0.2);
-  padding-left: 24px;
+  padding-left: 1rem;
   padding-top: 10px;
   margin-bottom: 1rem;
 `
@@ -123,6 +123,7 @@ export const AddIngredientsContainer = styled.div`
   height: 96px;
   background: transparent;
   padding-left: 1rem;
+  margin-bottom: 1.2rem;
 `
 
 export const AddIngredientsContainerTitleContainer = styled.div`
@@ -150,9 +151,8 @@ export const AddIngredientsContainerBoxCount = styled.div`
   border: 1px solid #F09035;
   border-radius: 5px;
   display: flex;
-  gap: 16px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 `
 
 export const IconButton = styled.button`
@@ -191,4 +191,61 @@ export const AddIngredientsContainerLineContainer = styled.div`
 
 export const AddIngredientsContainerLine = styled.hr`
   border: 1px solid #F09035;
+`
+
+export const QuestionContainer = styled.div`
+  height: 55px;
+  background: rgba(253, 215, 14, 0.2);
+  padding-left: 1rem;
+  padding-top: 10px;
+  margin-bottom: 1.4rem;
+`
+
+export const TextQuestion = styled.p`
+  color: #4E4E4E;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+`
+
+export const FooterRightContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+
+export const FooterRightContainerBoxCount = styled.div`
+  height: 50px;
+  width: 40%;
+  border: 1px solid #F09035;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`
+
+export const FooterRightContainerAddButon = styled.button`
+  height: 50px;
+  border-radius: 4px;
+  width: 60%;
+  background: #F09035;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+`
+
+export const FooterRightContainerTextAdd = styled.p`
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.33px;
 `

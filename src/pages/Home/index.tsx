@@ -43,12 +43,14 @@ import {
   ProductTitle,
   QuestionContainer,
   RightContainer,
+  TextAndIconContainer,
+  TextForIconMobile,
   TextQuestion,
   TitleBodyPopover,
 } from "./styles";
 import hamburguer from "../../assets/foto.jpg";
-import hamburguerMobile from '../../assets/fotoMobile.png'
-import { Minus, Plus } from "phosphor-react";
+import hamburguerMobile from "../../assets/fotoMobile.png";
+import { Circle, Minus, Plus, RadioButton } from "phosphor-react";
 
 interface HamburguerProps {
   id: string;
@@ -78,6 +80,32 @@ export function Home() {
   const [molhoDePicanhaQuantity, setMolhoDePicanhaQuantity] = useState(0);
   const [talheresQuantity, setTalheresQuantity] = useState(0);
   const [additionalTotal, setAdditionalTotal] = useState(0);
+  const [needTalherYes, setNeedTalherYes] = useState(false);
+  const [needTalherNo, setNeedTalherNo] = useState(false);
+
+  function changeNeedTalherForYes() {
+    if (needTalherYes === false) {
+      setNeedTalherYes(true);
+      setNeedTalherNo(false);
+    }
+
+    if (needTalherYes === true) {
+      setNeedTalherYes(false);
+      setNeedTalherNo(true);
+    }
+  }
+
+  function changeNeedTalherForNo() {
+    if (needTalherNo === false) {
+      setNeedTalherNo(true);
+      setNeedTalherYes(false);
+    }
+
+    if (needTalherNo === true) {
+      setNeedTalherNo(false);
+      setNeedTalherYes(true);
+    }
+  }
 
   function addQueijoCheddarQuantity() {
     if (additionalTotal >= 8) {
@@ -168,7 +196,7 @@ export function Home() {
   }
 
   function finishOrder() {
-    console.log('ola')
+    console.log("ola");
   }
 
   async function fetchHamburguerProps() {
@@ -187,200 +215,230 @@ export function Home() {
   }, []);
 
   return (
-      <Container>
-        <Header />
-        <ContainerBody>
-          <LeftContainer>
-            <ImgContainer>
-              <HamburguerImg src={hamburguer} alt="Hamburguer" />
-              <HamburguerImgMobile src={hamburguerMobile} alt="Hamburguer" />
-            </ImgContainer>
-            <ContainerProductTitle>
-              <ProductTitle>{product?.nm_product}</ProductTitle>
-            </ContainerProductTitle>
-            <ContainerProductDescription>
-              <ProductDescription>{product?.description}</ProductDescription>
-            </ContainerProductDescription>
-            <ContainerPrices>
-              <NewPrice>R${product?.vl_discount}</NewPrice>
-              <OriginalPrice>R${product?.vl_price}</OriginalPrice>
-            </ContainerPrices>
-          </LeftContainer>
-          <RightContainer>
-            <IngredientsContainer>
-              <HeaderIngredientsContainer>
-                <HeaderIngredientsContainerTitle>
-                  Adicionar Ingredientes
-                </HeaderIngredientsContainerTitle>
-                <HeaderIngredientsContainerSubtitle>
-                  Até 8 ingredientes
-                </HeaderIngredientsContainerSubtitle>
-              </HeaderIngredientsContainer>
-              <AddIngredientsContainer>
-                <AddIngredientsContainerTitleContainer>
-                  <AddIngredientsContainerTitle>
-                    {product?.ingredients[0].itens[0].nm_item}
-                  </AddIngredientsContainerTitle>
-                </AddIngredientsContainerTitleContainer>
+    <Container>
+      <Header />
+      <ContainerBody>
+        <LeftContainer>
+          <ImgContainer>
+            <HamburguerImg src={hamburguer} alt="Hamburguer" />
+            <HamburguerImgMobile src={hamburguerMobile} alt="Hamburguer" />
+          </ImgContainer>
+          <ContainerProductTitle>
+            <ProductTitle>{product?.nm_product}</ProductTitle>
+          </ContainerProductTitle>
+          <ContainerProductDescription>
+            <ProductDescription>{product?.description}</ProductDescription>
+          </ContainerProductDescription>
+          <ContainerPrices>
+            <NewPrice>R${product?.vl_discount}</NewPrice>
+            <OriginalPrice>R${product?.vl_price}</OriginalPrice>
+          </ContainerPrices>
+        </LeftContainer>
+        <RightContainer>
+          <IngredientsContainer>
+            <HeaderIngredientsContainer>
+              <HeaderIngredientsContainerTitle>
+                Adicionar Ingredientes
+              </HeaderIngredientsContainerTitle>
+              <HeaderIngredientsContainerSubtitle>
+                Até 8 ingredientes
+              </HeaderIngredientsContainerSubtitle>
+            </HeaderIngredientsContainer>
+            <AddIngredientsContainer>
+              <AddIngredientsContainerTitleContainer>
+                <AddIngredientsContainerTitle>
+                  {product?.ingredients[0].itens[0].nm_item}
+                </AddIngredientsContainerTitle>
+              </AddIngredientsContainerTitleContainer>
 
-                <AddIngredientsContainerBoxCountContainer>
-                  <AddIngredientsContainerBoxCount>
-                    <IconButton onClick={decreaseQueijoCheddarQuantity}>
-                      <Minus size={16} color="#D80000" />
-                    </IconButton>
-                    {queijoCheddarQuantity}
-                    <IconButton onClick={addQueijoCheddarQuantity}>
-                      <Plus size={16} color="#D80000" />
-                    </IconButton>
-                  </AddIngredientsContainerBoxCount>
-                </AddIngredientsContainerBoxCountContainer>
-                <AddIngredientsContainerPrice>
-                  <AddIngredientsContainerIconPrice>
-                    <Plus size={12} color="#F09035" />
-                  </AddIngredientsContainerIconPrice>
-                  <AddIngredientsPrice>
-                    {product?.ingredients[0].itens[0].vl_item}
-                  </AddIngredientsPrice>
-                </AddIngredientsContainerPrice>
-                <AddIngredientsContainerLine />
-              </AddIngredientsContainer>
-              <AddIngredientsContainer style={{ marginTop: 24 }}>
-                <AddIngredientsContainerTitleContainer>
-                  <AddIngredientsContainerTitle>
-                    {product?.ingredients[0].itens[1].nm_item}
-                  </AddIngredientsContainerTitle>
-                </AddIngredientsContainerTitleContainer>
-
-                <AddIngredientsContainerBoxCountContainer>
-                  <AddIngredientsContainerBoxCount>
-                    <IconButton onClick={decreaseCebolaCrispyQuantity}>
-                      <Minus size={16} color="#D80000" />
-                    </IconButton>
-                    {cebolaCrispyQuantity}
-                    <IconButton onClick={addCebolaCrispyQuantity}>
-                      <Plus size={16} color="#D80000" />
-                    </IconButton>
-                  </AddIngredientsContainerBoxCount>
-                </AddIngredientsContainerBoxCountContainer>
-                <AddIngredientsContainerPrice>
-                  <AddIngredientsContainerIconPrice>
-                    <Plus size={12} color="#F09035" />
-                  </AddIngredientsContainerIconPrice>
-                  <AddIngredientsPrice>
-                    {product?.ingredients[0].itens[1].vl_item}0
-                  </AddIngredientsPrice>
-                </AddIngredientsContainerPrice>
-                <AddIngredientsContainerLine />
-              </AddIngredientsContainer>
-              <AddIngredientsContainer style={{ marginTop: 24 }}>
-                <AddIngredientsContainerTitleContainer>
-                  <AddIngredientsContainerTitle>
-                    {product?.ingredients[0].itens[2].nm_item}
-                  </AddIngredientsContainerTitle>
-                </AddIngredientsContainerTitleContainer>
-
-                <AddIngredientsContainerBoxCountContainer>
-                  <AddIngredientsContainerBoxCount>
-                    <IconButton onClick={decreaseMolhoCheddarQuantity}>
-                      <Minus size={16} color="#D80000" />
-                    </IconButton>
-                    {molhoCheddarQuantity}
-                    <IconButton onClick={addMolhoCheddarQuantity}>
-                      <Plus size={16} color="#D80000" />
-                    </IconButton>
-                  </AddIngredientsContainerBoxCount>
-                </AddIngredientsContainerBoxCountContainer>
-                <AddIngredientsContainerPrice>
-                  <AddIngredientsContainerIconPrice>
-                    <Plus size={12} color="#F09035" />
-                  </AddIngredientsContainerIconPrice>
-                  <AddIngredientsPrice>
-                    {product?.ingredients[0].itens[2].vl_item}0
-                  </AddIngredientsPrice>
-                </AddIngredientsContainerPrice>
-                <AddIngredientsContainerLine />
-              </AddIngredientsContainer>
-              <AddIngredientsContainer style={{ marginTop: 24 }}>
-                <AddIngredientsContainerTitleContainer>
-                  <AddIngredientsContainerTitle>
-                    {product?.ingredients[0].itens[3].nm_item}
-                  </AddIngredientsContainerTitle>
-                </AddIngredientsContainerTitleContainer>
-
-                <AddIngredientsContainerBoxCountContainer>
-                  <AddIngredientsContainerBoxCount>
-                    <IconButton onClick={decreaseMolhoDePicanhaQuantity}>
-                      <Minus size={16} color="#D80000" />
-                    </IconButton>
-                    {molhoDePicanhaQuantity}
-                    <IconButton onClick={addMolhoDePicanhaQuantity}>
-                      <Plus size={16} color="#D80000" />
-                    </IconButton>
-                  </AddIngredientsContainerBoxCount>
-                </AddIngredientsContainerBoxCountContainer>
-                <AddIngredientsContainerPrice>
-                  <AddIngredientsContainerIconPrice>
-                    <Plus size={12} color="#F09035" />
-                  </AddIngredientsContainerIconPrice>
-                  <AddIngredientsPrice>
-                    {product?.ingredients[0].itens[3].vl_item}0
-                  </AddIngredientsPrice>
-                </AddIngredientsContainerPrice>
-                <AddIngredientsContainerLine />
-              </AddIngredientsContainer>
-              <QuestionContainer>
-                <TextQuestion>{product?.ingredients[1].group}</TextQuestion>
-              </QuestionContainer>
-              <FooterRightContainer>
-                <FooterRightContainerBoxCount>
-                  <IconButton onClick={decreaseTalheresQuantity}>
+              <AddIngredientsContainerBoxCountContainer>
+                <AddIngredientsContainerBoxCount>
+                  <IconButton onClick={decreaseQueijoCheddarQuantity}>
                     <Minus size={16} color="#D80000" />
                   </IconButton>
-                  {talheresQuantity}
-                  <IconButton onClick={addTalheresQuantity}>
+                  {queijoCheddarQuantity}
+                  <IconButton onClick={addQueijoCheddarQuantity}>
                     <Plus size={16} color="#D80000" />
                   </IconButton>
-                </FooterRightContainerBoxCount>
-                <Popover
-                  trigger={
-                    <FooterRightContainerAddButon onClick={finishOrder}>
-                      <FooterRightContainerTextAdd>
-                        Adicionar
-                      </FooterRightContainerTextAdd>
-                    </FooterRightContainerAddButon>
-                  }
-                  position="top center"
-                >
-                  <PopoverContainer>
-                    <HeaderPopover>
-                      <HeaderPopoverText>
-                        Adicionado com sucesso
-                      </HeaderPopoverText>
-                    </HeaderPopover>
-                    <BodyPopover>
-                      <TitleBodyPopover>Oferta Cheddar Bacon</TitleBodyPopover>
-                      <HeaderListBodyPopover>Adicionais:</HeaderListBodyPopover>
-                      <ListBodyPopover>
-                        <ItemListBodyPopover>
-                          {queijoCheddarQuantity}&nbsp;Queijo Cheddar
-                        </ItemListBodyPopover>
-                        <ItemListBodyPopover>
-                          {cebolaCrispyQuantity}&nbsp;Cebola Crispy
-                        </ItemListBodyPopover>
-                        <ItemListBodyPopover>
-                          {molhoCheddarQuantity}&nbsp;Molho cheddar
-                        </ItemListBodyPopover>
-                        <ItemListBodyPopover>
-                          {molhoDePicanhaQuantity}&nbsp;Molho de picanha
-                        </ItemListBodyPopover>
-                      </ListBodyPopover>
-                    </BodyPopover>
-                  </PopoverContainer>
-                </Popover>
-              </FooterRightContainer>
-            </IngredientsContainer>
-          </RightContainer>
-        </ContainerBody>
-      </Container>
+                </AddIngredientsContainerBoxCount>
+              </AddIngredientsContainerBoxCountContainer>
+              <AddIngredientsContainerPrice>
+                <AddIngredientsContainerIconPrice>
+                  <Plus size={12} color="#F09035" />
+                </AddIngredientsContainerIconPrice>
+                <AddIngredientsPrice>
+                  {product?.ingredients[0].itens[0].vl_item}
+                </AddIngredientsPrice>
+              </AddIngredientsContainerPrice>
+              <AddIngredientsContainerLine />
+            </AddIngredientsContainer>
+            <AddIngredientsContainer style={{ marginTop: 24 }}>
+              <AddIngredientsContainerTitleContainer>
+                <AddIngredientsContainerTitle>
+                  {product?.ingredients[0].itens[1].nm_item}
+                </AddIngredientsContainerTitle>
+              </AddIngredientsContainerTitleContainer>
+
+              <AddIngredientsContainerBoxCountContainer>
+                <AddIngredientsContainerBoxCount>
+                  <IconButton onClick={decreaseCebolaCrispyQuantity}>
+                    <Minus size={16} color="#D80000" />
+                  </IconButton>
+                  {cebolaCrispyQuantity}
+                  <IconButton onClick={addCebolaCrispyQuantity}>
+                    <Plus size={16} color="#D80000" />
+                  </IconButton>
+                </AddIngredientsContainerBoxCount>
+              </AddIngredientsContainerBoxCountContainer>
+              <AddIngredientsContainerPrice>
+                <AddIngredientsContainerIconPrice>
+                  <Plus size={12} color="#F09035" />
+                </AddIngredientsContainerIconPrice>
+                <AddIngredientsPrice>
+                  {product?.ingredients[0].itens[1].vl_item}0
+                </AddIngredientsPrice>
+              </AddIngredientsContainerPrice>
+              <AddIngredientsContainerLine />
+            </AddIngredientsContainer>
+            <AddIngredientsContainer style={{ marginTop: 24 }}>
+              <AddIngredientsContainerTitleContainer>
+                <AddIngredientsContainerTitle>
+                  {product?.ingredients[0].itens[2].nm_item}
+                </AddIngredientsContainerTitle>
+              </AddIngredientsContainerTitleContainer>
+
+              <AddIngredientsContainerBoxCountContainer>
+                <AddIngredientsContainerBoxCount>
+                  <IconButton onClick={decreaseMolhoCheddarQuantity}>
+                    <Minus size={16} color="#D80000" />
+                  </IconButton>
+                  {molhoCheddarQuantity}
+                  <IconButton onClick={addMolhoCheddarQuantity}>
+                    <Plus size={16} color="#D80000" />
+                  </IconButton>
+                </AddIngredientsContainerBoxCount>
+              </AddIngredientsContainerBoxCountContainer>
+              <AddIngredientsContainerPrice>
+                <AddIngredientsContainerIconPrice>
+                  <Plus size={12} color="#F09035" />
+                </AddIngredientsContainerIconPrice>
+                <AddIngredientsPrice>
+                  {product?.ingredients[0].itens[2].vl_item}0
+                </AddIngredientsPrice>
+              </AddIngredientsContainerPrice>
+              <AddIngredientsContainerLine />
+            </AddIngredientsContainer>
+            <AddIngredientsContainer style={{ marginTop: 24 }}>
+              <AddIngredientsContainerTitleContainer>
+                <AddIngredientsContainerTitle>
+                  {product?.ingredients[0].itens[3].nm_item}
+                </AddIngredientsContainerTitle>
+              </AddIngredientsContainerTitleContainer>
+
+              <AddIngredientsContainerBoxCountContainer>
+                <AddIngredientsContainerBoxCount>
+                  <IconButton onClick={decreaseMolhoDePicanhaQuantity}>
+                    <Minus size={16} color="#D80000" />
+                  </IconButton>
+                  {molhoDePicanhaQuantity}
+                  <IconButton onClick={addMolhoDePicanhaQuantity}>
+                    <Plus size={16} color="#D80000" />
+                  </IconButton>
+                </AddIngredientsContainerBoxCount>
+              </AddIngredientsContainerBoxCountContainer>
+              <AddIngredientsContainerPrice>
+                <AddIngredientsContainerIconPrice>
+                  <Plus size={12} color="#F09035" />
+                </AddIngredientsContainerIconPrice>
+                <AddIngredientsPrice>
+                  {product?.ingredients[0].itens[3].vl_item}0
+                </AddIngredientsPrice>
+              </AddIngredientsContainerPrice>
+              <AddIngredientsContainerLine />
+            </AddIngredientsContainer>
+            <QuestionContainer>
+              <TextQuestion>{product?.ingredients[1].group}</TextQuestion>
+            </QuestionContainer>
+            {needTalherYes ? (
+              <TextAndIconContainer>
+                <TextForIconMobile>Sim</TextForIconMobile>
+                <IconButton onClick={changeNeedTalherForYes}>
+                  <RadioButton color="#FEBC10" size={20} weight="fill" />
+                </IconButton>
+              </TextAndIconContainer>
+            ) : (
+              <TextAndIconContainer>
+                <TextForIconMobile>Sim</TextForIconMobile>
+                <IconButton onClick={changeNeedTalherForYes}>
+                  <Circle color="#FEBC10" size={20} />
+                </IconButton>
+              </TextAndIconContainer>
+            )}
+            {needTalherNo ? (
+              <TextAndIconContainer style={{ marginBottom: 48 }}>
+                <TextForIconMobile>Não</TextForIconMobile>
+                <IconButton onClick={changeNeedTalherForNo}>
+                  <RadioButton color="#FEBC10" size={20} weight="fill" />
+                </IconButton>
+              </TextAndIconContainer>
+            ) : (
+              <TextAndIconContainer style={{ marginBottom: 48 }}>
+                <TextForIconMobile>Não</TextForIconMobile>
+                <IconButton onClick={changeNeedTalherForNo}>
+                  <Circle color="#FEBC10" size={20} />
+                </IconButton>
+              </TextAndIconContainer>
+            )}
+            <FooterRightContainer>
+              <FooterRightContainerBoxCount>
+                <IconButton onClick={decreaseTalheresQuantity} disabled={needTalherNo}>
+                  <Minus size={16} color="#D80000" />
+                </IconButton>
+                {talheresQuantity}
+                <IconButton onClick={addTalheresQuantity} disabled={needTalherNo}>
+                  <Plus size={16} color="#D80000" />
+                </IconButton>
+              </FooterRightContainerBoxCount>
+              <Popover
+                trigger={
+                  <FooterRightContainerAddButon onClick={finishOrder}>
+                    <FooterRightContainerTextAdd>
+                      Adicionar
+                    </FooterRightContainerTextAdd>
+                  </FooterRightContainerAddButon>
+                }
+                position="top center"
+              >
+                <PopoverContainer>
+                  <HeaderPopover>
+                    <HeaderPopoverText>
+                      Adicionado com sucesso
+                    </HeaderPopoverText>
+                  </HeaderPopover>
+                  <BodyPopover>
+                    <TitleBodyPopover>Oferta Cheddar Bacon</TitleBodyPopover>
+                    <HeaderListBodyPopover>Adicionais:</HeaderListBodyPopover>
+                    <ListBodyPopover>
+                      <ItemListBodyPopover>
+                        {queijoCheddarQuantity}&nbsp;Queijo Cheddar
+                      </ItemListBodyPopover>
+                      <ItemListBodyPopover>
+                        {cebolaCrispyQuantity}&nbsp;Cebola Crispy
+                      </ItemListBodyPopover>
+                      <ItemListBodyPopover>
+                        {molhoCheddarQuantity}&nbsp;Molho cheddar
+                      </ItemListBodyPopover>
+                      <ItemListBodyPopover>
+                        {molhoDePicanhaQuantity}&nbsp;Molho de picanha
+                      </ItemListBodyPopover>
+                    </ListBodyPopover>
+                  </BodyPopover>
+                </PopoverContainer>
+              </Popover>
+            </FooterRightContainer>
+          </IngredientsContainer>
+        </RightContainer>
+      </ContainerBody>
+    </Container>
   );
 }

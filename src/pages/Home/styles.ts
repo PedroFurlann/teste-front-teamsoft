@@ -250,6 +250,11 @@ export const IconButton = styled.button`
   &:hover {
     opacity: 0.7;
   }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: auto;
+  }
 `
 
 export const AddIngredientsContainerPrice = styled.div`
@@ -400,4 +405,26 @@ export const ItemListBodyPopover = styled.li`
   line-height: 100%;
   color: #4E4E4E;
   margin-bottom: 0.2rem;
+`
+
+export const TextAndIconContainer = styled.div`
+  display: none;
+
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+  }
+  
+`
+
+export const TextForIconMobile = styled.p`
+  font-family: 'Roboto' sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #4E4E4E;
 `

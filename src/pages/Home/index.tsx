@@ -207,7 +207,7 @@ export function Home() {
       const response = await axios.get<HamburguerProps[]>(
         "https://6077803e1ed0ae0017d6aea4.mockapi.io/test-frontend/products"
       );
-      setProduct(response.data[0]); // Assuming the response contains an array of products and we want to save the first product in the state
+      setProduct(response.data[0]);
     } catch (error) {
       console.log("Erro ao Buscar dados", error);
     } finally {
